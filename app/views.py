@@ -8,19 +8,28 @@ from django.contrib.auth.forms import UserCreationForm
 
 def home(request):
     posts = Post.objects.all()
+    form = PostForm(request.POST or None, files=request.FILES)      
+    if form.is_valid():
+        post=form.save(commit=False)
+        post.user = request.user.profile
+        post.save()
+        return redirect('home')
     context = {
         'posts': posts,
+        'form': form,
     }
     return render(request, 'home.html', context)
 
 
 
-def create_post(request):
-    form = PostForm(request.POST or None, files=request.FILES)      
-    if form.is_valid():
-        form.save()
-        return redirect('home')
-    return render(request, 'create_post.html', {'form': form})
+# def create_post(request):
+#     form = PostForm(request.POST or None, files=request.FILES)      
+#     if form.is_valid():
+#         post=form.save(commit=False)
+#         post.user = request.user.profile
+#         post.save()
+#         return redirect('home')
+#     return render(request, 'create_post.html', {'form': form})
 
       
 def signup(request):

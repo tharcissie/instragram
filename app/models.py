@@ -8,8 +8,11 @@ from django.dispatch import receiver
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
-    caption = models.CharField(max_length=700, blank=True)
-    date = models.DateField(auto_now_add=True, blank=True)
+    profile = models.ImageField(upload_to='images/', default='a.png')
+
+    def __str__(self):
+        return self.user.username
+    
 
 @receiver(post_save, sender=User)
 def update_user_profile(sender, instance, created, **kwargs):

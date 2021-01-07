@@ -20,7 +20,8 @@
                 </div>
                 <div class="card-body mx-auto">
                     <p class="card-title">{{user.profile.bio}}</p>
-                    <a href="#" class="btn btn-primary" data-toggle="modal" data-target="#imageUpload">Add Post</a>
+                    <a href="#" class="btn" data-toggle="modal" style="background-color: #F94144; color:white"
+                        data-target="#imageUpload">Add Post</a>
                 </div>
                 {% endif %}
             </div>
@@ -62,16 +63,17 @@
                 <img class="card-img-top" src="{{post.image.url}}" alt="{{post.name}}">
                 <div class="iconic ml-2">
                     <button class="btn btn-sm" type="submit" name="image_id" value="{{post.pk}}">
-                        {{post.likes.count}} <i class="far fa-heart hearticon mx-auto"
-                                aria-hidden="true"></i></a>
+                        {{post.likes.count}} <i class="far fa-heart hearticon mx-auto" aria-hidden="true"></i></a>
                     </button>
                     <button class="btn btn-sm" type="submit">{{post.comments.count}}<i
-                                class="far fa-comment hearticon mx-auto" aria-hidden="true"></i>
-                       </button>
+                            class="far fa-comment hearticon mx-auto" aria-hidden="true"></i>
+                    </button>
                 </div>
-        <div class="container"><p>{{post.caption}}</p></div>
-                <button class="text-secondary  p-2" style="border: 2px solid pink;"><a href="{% url 'comment' post.pk %}">View Post</a></button>
-            
+                <div class="container">
+                    <p>{{post.caption}}</p>
+                </div>
+                <a href="{% url 'comment' post.pk %}" class="btn btn-block  p-2"
+                        style="background-color: #F94144; color: white;">View Post</a>
             </div>
             {% endfor %}
 

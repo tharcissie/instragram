@@ -2,22 +2,25 @@
 {% load crispy_forms_tags %}
 {% block content %}
 
-<div class="container mt-5">
+<div style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOjfr3UQnY5LvsUZlJXfgwD_kC9fDKelULcQ&usqp=CAU'); background-position: fixed; background-clip: cover;">
+
+  <div class="container mt-5">
 
 
-  <div class="row justify-content-center">
-    <div class="col-md-6">
-      <div class="card p-5">
-        <h2 class="text-center">Sign up to Instagram</h2>
-        <hr>
-        <form method="post" enctype="multipart/form-data">
-          {% csrf_token %}
-          {{ form|crispy}}
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card p-5">
+          <h2 class="text-center">Sign up to Instagram</h2>
           <hr>
-          <button class="btn btn-danger" type="submit">Sign up</button>
-        </form>
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy}}
+            <hr>
+            <button class="btn btn-danger" type="submit">Sign up</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 </div>
-  {% endblock %}
+{% endblock %}

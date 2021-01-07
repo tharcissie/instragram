@@ -25,7 +25,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-#SECRET_KEY = 'yt9&2h-em5avun!h0n0mcrm#uo*w-11bk4%i1h2@4k5l-#p9cd'
+SECRET_KEY = 'yt9&2h-em5avun!h0n0mcrm#uo*w-11bk4%i1h2@4k5l-#p9cd'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -89,43 +89,43 @@ WSGI_APPLICATION = 'insta.wsgi.application'
 #     }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'instag',
-#         'USER': 'tharcissie',
-#         'PASSWORD':'ntakarakorwa123',
-#     }
-# }
+DATABASES = {
+     'default': {
+         'ENGINE': 'django.db.backends.postgresql',
+         'NAME': 'instag',
+         'USER': 'tharcissie',
+         'PASSWORD':'ntakarakorwa123',
+     }
+}
 
-MODE=config("MODE", default="dev")
-SECRET_KEY = config('SECRET_KEY')
-DEBUG = config('DEBUG', default=False, cast=bool)
-# development
-if config('MODE')=="dev":
-   DATABASES = {
-       'default': {
-           'ENGINE': 'django.db.backends.postgresql',
-           'NAME': config('instag'),
-           'USER': config('tharcissie'),
-           'PASSWORD': config('ntakarakorwa123'),
-           'HOST': config('127.0.0.1'),
-           'PORT': '',
-       }
+# MODE=config("MODE", default="dev")
+# SECRET_KEY = config('SECRET_KEY')
+# DEBUG = config('DEBUG', default=False, cast=bool)
+# # development
+# if config('MODE')=="dev":
+#    DATABASES = {
+#        'default': {
+#            'ENGINE': 'django.db.backends.postgresql',
+#            'NAME': config('instag'),
+#            'USER': config('tharcissie'),
+#            'PASSWORD': config('ntakarakorwa123'),
+#            'HOST': config('127.0.0.1'),
+#            'PORT': '',
+#        }
        
-   }
-# production
-else:
-   DATABASES = {
-       'default': dj_database_url.config(
-           default=config('DATABASE_URL')
-       )
-   }
+#    }
+# # production
+# else:
+#    DATABASES = {
+#        'default': dj_database_url.config(
+#            default=config('DATABASE_URL')
+#        )
+#    }
 
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
+# db_from_env = dj_database_url.config(conn_max_age=500)
+# DATABASES['default'].update(db_from_env)
 
-ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
+# ALLOWED_HOSTS = config('ALLOWED_HOSTS', cast=Csv())
 
 
 # Password validation

@@ -1,10 +1,23 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
-  <h2>Sign up</h2>
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Sign up</button>
-  </form>
-{% endblock %}
+
+<div class="container mt-5">
+
+
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card p-5">
+        <h2 class="text-center">Sign up to Instagram</h2>
+        <hr>
+        <form method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form|crispy}}
+          <hr>
+          <button class="btn btn-danger" type="submit">Sign up</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+        {% endblock %}
